@@ -11,10 +11,10 @@ namespace AuthServer.Core.Services
     public interface IServiceGeneric<TEntity, TDto> where TEntity: class where TDto: class
     {
         Task<Response<TDto>> GetByIdAsync(int id);
-        Task<Response<IEnumerable<TEntity>>> GetAllAsync();
-        Task<IEnumerable<TDto>> Where(Expression<Func<TEntity, bool>> predicate);
-        Task<Response<TDto>> AddAsync(TEntity entity);
-        void Remove(TEntity entity);
-        TEntity Update(TEntity entity);
+        Task<Response<IEnumerable<TDto>>> GetAllAsync();
+        Task<Response<IEnumerable<TDto>>> Where(Expression<Func<TEntity, bool>> predicate);
+        Task<Response<TDto>> AddAsync(TDto entity);
+        Task<Response<NoDataDTO>> Remove(int id);
+        Task<Response<NoDataDTO>> Update(TDto entity,int id);
     }
 }
