@@ -18,7 +18,7 @@ namespace AuthServer.Service.Services
         {
             _userManager = userManager;
         }
-        public async Task<Response<UserAppDto>> CreateuserAsync(CreateUserDto createUserDto)
+        public async Task<Response<UserAppDto>> CreateUserAsync(CreateUserDto createUserDto)
         {
             var user = new UserApp { Email = createUserDto.Email,UserName=createUserDto.UserName };
 
@@ -26,7 +26,7 @@ namespace AuthServer.Service.Services
             if (!result.Succeeded)
             {
                 var errors = result.Errors.Select(x => x.Description).ToList();
-                return Response<UserAppDto>.Fail(new ErrorDTO(errors, true), 400);
+               // return Response<UserAppDto>.Fail(new ErrorDTO(errors, true), 400);
             }
             return Response<UserAppDto>.Success(ObjectMapper.Mapper.Map<UserAppDto>(user), 200);  
         }
